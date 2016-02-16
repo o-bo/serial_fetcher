@@ -111,6 +111,26 @@ SerialFetcher.configure |config|
   }
 ```
 
+## TODO
+
+Add a  fetch_adapter and pass the current context (current_user), then pass the
+context to the fetcher ; it will allow the developer to test in the lambda if
+the current user can access the requested resources.
+
+```ruby
+SerialFetcher.adapter(current_user: current_user).fetch(params, schema)
+```
+Example :
+
+```ruby
+config.fetcher = ->(param_name, param, context) {
+  # ...
+  if context[:current_user].cannot?(:show, post)
+    return nil
+  end
+}
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
