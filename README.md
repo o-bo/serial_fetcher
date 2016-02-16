@@ -88,6 +88,8 @@ And then @store will be created with :
 
 ```ruby
 @store = {
+  user: User.find params[:user_id],
+  blog: Blog.find params[:blog_id],
   article: Article.find params[:post_id],
   comment: Comment.find params[:id]
 }
