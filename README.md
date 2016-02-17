@@ -50,7 +50,7 @@ Now in your comments_controller.rb, you probably have something like :
 @user = User.find params[:user_id]
 @blog = Blog.find params[:blog_id]
 @post = Post.find params[:post_id]
-@comment = User.find params[:id]
+@comment = Comment.find params[:id]
 ```
 
 With SerialFetcher, you could just write :
